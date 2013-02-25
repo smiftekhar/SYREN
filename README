@@ -1,0 +1,54 @@
+========================================================================
+README:  SYREN
+Author:  S M Iftekharul Alam (alams@ecn.purdue.edu)
+========================================================================
+
+This README is intended to give an overview of the organizational
+structure of the SYREN implementation as well as  
+how to compile and run the application,
+
+------------------------------------------------------------------------
+Organizational Structure and Overview
+------------------------------------------------------------------------
+SYREN is made up of two separate pieces: one mote application (which can
+ be configured for base station and regular motes by modifying Makefile)
+ and one java based application to interact with the base station mote.
+The code for all three applications is divided up 
+among two directories: SYRENController and SerialMessenger.
+
+The code specific to the mote is contained under
+the 'SYRENController' directory, and code for the java 
+application is found in the 'SerialMessenger.
+
+The SYRENController application is needed to be installed on 
+all the motes. The base station mote will be connected to a serial port 
+of a laptop/computer. That laptop/computer will run the java application 
+'SerialMessenger' which communicate the basestation through serial port. 
+
+
+------------------------------------------------------------------------
+Installation Instructions and Running the Applications
+------------------------------------------------------------------------
+
+Here are the instructions to compile and install the whole program:
+1. To configure the mote as base station: 
+Go to the SYRENController directory and give the following commands.
+ i. Add CFLAGS += BASESTATION in the Makefile
+ ii. make telosb
+ iii. make telosb reinstall make telosb reinstall.1 bsl,/dev/ttyUSB0 
+ 
+2. To configure the mote as regular one:
+Go to the SYRENController directory and give the following commands.
+ i. make telosb reinstall 
+ ii. make telosb reinstall make telosb reinstall.<MOTE_ID_OTHER_THAN_1> bsl,/dev/ttyUSB0
+
+3. To compile SerialMessenger application:
+Go to the SerialMessenger/src directory and give the following commands.
+  i. javac -d ../bin SerialMessenger.java
+ 
+Here are the instruction to run the program:
+
+After connecting the base station mote to the laptop, run the serial messenger application:
+Go to the SerialMessenger/bin directory and give the following commands.
+  i. java SerialMessenger <SERIAL_PORT_NAME> (e.g. java SerialMessenger /dev/ttyUSB0)
+  ii. A GUI will come up. Click 'Run Concurrently' to start the application.
