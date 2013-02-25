@@ -1,0 +1,5 @@
+COMPONENT=SYRENControllerAppC
+CFLAGS += -I$(TOSDIR)/lib/net/drip -I$(TOSDIR)/lib/net -DTOSH_DATA_LENGTH=64
+CFLAGS += -I$(TOSDIR)/lib/printf -DNEW_PRINTF_SEMANTICS
+include $(MAKERULES)
+
